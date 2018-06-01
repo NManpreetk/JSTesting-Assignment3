@@ -30,32 +30,34 @@ describe("App", () => {
         let computer = new Computer();
         expect(computer.hardDriveSpace).toBe(512)
       })
-    })
 
-  describe("installProgram", () => {
-    let computer = new Computer();
-    beforeEach(function (done) {
-      computer.installProgram(500, function () {
-        done()
-      })
-    })
-    it("can install a program if there is sufficient space", (done) => {
-      expect(computer.hardDriveSpace).toBe(12);
-      done()
-    })
+      describe('Hard-disk-drive', () => {
+        describe("installProgram", () => {
+          let computer = new Computer();
+          beforeEach(function (done) {
+            computer.installProgram(500, function () {
+              done()
+            })
+          })
+          it("can install a program if there is sufficient space", (done) => {
+            expect(computer.hardDriveSpace).toBe(12);
+            done()
+          })
+        })
 
-    describe("installProgram", () => {
-      let computer = new Computer();
-      beforeEach(function (done) {
-        computer.installProgram(600, function () {
-          done()
+        describe("installProgram", () => {
+          let computer = new Computer();
+          beforeEach(function (done) {
+            computer.installProgram(600, function () {
+              done()
+            })
+          })
+          it("is unable to install a program if there is insufficient space", (done) => {
+            expect(computer.hardDriveSpace).toBe(512);
+            done()
+          })
         })
       })
-      it("is unable to install a program if there is insufficient space", (done) => {
-        expect(computer.hardDriveSpace).toBe(512);
-        done()
-      })
-
 
       describe("format", () => {
         let computer = new Computer();
@@ -71,5 +73,4 @@ describe("App", () => {
         })
       })
     })
-  })
 })
